@@ -18,15 +18,6 @@ export const Route = createFileRoute("/chat")({
 
 type Msg = { role: "user" | "assistant"; content: string };
 
-const SUGGESTED = [
-  "Help me plan my day",
-  "Summarize this report",
-  "Explain this concept",
-  "Draft a professional email",
-  "Improve my writing",
-  "Translate this text",
-];
-
 function ChatPage() {
   const { prefs } = usePreferences();
   const [messages, setMessages] = useState<Msg[]>([
@@ -50,23 +41,6 @@ function ChatPage() {
     const history = messages;
     setMessages([...history, { role: "user", content: text }]);
     setInput("");
-    setLoading(true);
-    try {
-      const res = await generateAi({
-        data: { task: "chat", input: text, prefs, history },
-      });
-      setMessages((m) => [...m, { role: "assistant", content: res.text }]);
-    } catch (e) {
-      toast.error(e instanceof Error ? e.message : "Something went wrong");
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  async function sendSuggested(text: string) {
-    if (loading) return;
-    const history = messages;
-    setMessages([...history, { role: "user", content: text }]);
     setLoading(true);
     try {
       const res = await generateAi({
@@ -129,25 +103,6 @@ function ChatPage() {
           )}
           <div ref={endRef} />
         </div>
-        {messages.length <= 1 && !loading && (
-          <div className="px-4 sm:px-6 pb-3">
-            <div className="text-xs uppercase tracking-widest text-muted-foreground mb-2">
-              Try asking
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {SUGGESTED.map((s) => (
-                <button
-                  key={s}
-                  type="button"
-                  onClick={() => sendSuggested(s)}
-                  className="text-xs rounded-full border bg-background hover:bg-muted px-3 py-1.5 transition"
-                >
-                  {s}
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
         <div className="border-t p-3 sm:p-4">
           <div className="flex gap-2 items-end">
             <Textarea
