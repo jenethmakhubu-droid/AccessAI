@@ -9,10 +9,34 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SimplifyRouteImport } from './routes/simplify'
+import { Route as ResearchRouteImport } from './routes/research'
+import { Route as PlannerRouteImport } from './routes/planner'
+import { Route as MeetingRouteImport } from './routes/meeting'
 import { Route as EmailRouteImport } from './routes/email'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as IndexRouteImport } from './routes/index'
 
+const SimplifyRoute = SimplifyRouteImport.update({
+  id: '/simplify',
+  path: '/simplify',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResearchRoute = ResearchRouteImport.update({
+  id: '/research',
+  path: '/research',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlannerRoute = PlannerRouteImport.update({
+  id: '/planner',
+  path: '/planner',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MeetingRoute = MeetingRouteImport.update({
+  id: '/meeting',
+  path: '/meeting',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EmailRoute = EmailRouteImport.update({
   id: '/email',
   path: '/email',
@@ -33,34 +57,100 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRoute
   '/email': typeof EmailRoute
+  '/meeting': typeof MeetingRoute
+  '/planner': typeof PlannerRoute
+  '/research': typeof ResearchRoute
+  '/simplify': typeof SimplifyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRoute
   '/email': typeof EmailRoute
+  '/meeting': typeof MeetingRoute
+  '/planner': typeof PlannerRoute
+  '/research': typeof ResearchRoute
+  '/simplify': typeof SimplifyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRoute
   '/email': typeof EmailRoute
+  '/meeting': typeof MeetingRoute
+  '/planner': typeof PlannerRoute
+  '/research': typeof ResearchRoute
+  '/simplify': typeof SimplifyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/dashboard' | '/email'
+  fullPaths:
+    | '/'
+    | '/dashboard'
+    | '/email'
+    | '/meeting'
+    | '/planner'
+    | '/research'
+    | '/simplify'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dashboard' | '/email'
-  id: '__root__' | '/' | '/dashboard' | '/email'
+  to:
+    | '/'
+    | '/dashboard'
+    | '/email'
+    | '/meeting'
+    | '/planner'
+    | '/research'
+    | '/simplify'
+  id:
+    | '__root__'
+    | '/'
+    | '/dashboard'
+    | '/email'
+    | '/meeting'
+    | '/planner'
+    | '/research'
+    | '/simplify'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DashboardRoute: typeof DashboardRoute
   EmailRoute: typeof EmailRoute
+  MeetingRoute: typeof MeetingRoute
+  PlannerRoute: typeof PlannerRoute
+  ResearchRoute: typeof ResearchRoute
+  SimplifyRoute: typeof SimplifyRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/simplify': {
+      id: '/simplify'
+      path: '/simplify'
+      fullPath: '/simplify'
+      preLoaderRoute: typeof SimplifyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/research': {
+      id: '/research'
+      path: '/research'
+      fullPath: '/research'
+      preLoaderRoute: typeof ResearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/planner': {
+      id: '/planner'
+      path: '/planner'
+      fullPath: '/planner'
+      preLoaderRoute: typeof PlannerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/meeting': {
+      id: '/meeting'
+      path: '/meeting'
+      fullPath: '/meeting'
+      preLoaderRoute: typeof MeetingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/email': {
       id: '/email'
       path: '/email'
@@ -89,6 +179,10 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DashboardRoute: DashboardRoute,
   EmailRoute: EmailRoute,
+  MeetingRoute: MeetingRoute,
+  PlannerRoute: PlannerRoute,
+  ResearchRoute: ResearchRoute,
+  SimplifyRoute: SimplifyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
