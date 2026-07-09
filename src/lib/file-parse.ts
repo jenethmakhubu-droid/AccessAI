@@ -20,7 +20,8 @@ export async function parseFile(file: File): Promise<ParsedFile> {
   }
 
   if (lower.endsWith(".docx")) {
-    const mammoth = await import("mammoth/mammoth.browser");
+    // @ts-expect-error - no types for browser build
+    const mammoth = await import("mammoth/mammoth.browser.js");
     const arrayBuffer = await file.arrayBuffer();
     const { value } = await mammoth.extractRawText({ arrayBuffer });
     return { name, text: clamp(value) };
@@ -29,8 +30,10 @@ export async function parseFile(file: File): Promise<ParsedFile> {
   if (lower.endsWith(".pdf") || file.type === "application/pdf") {
     const pdfjs = await import("pdfjs-dist");
     // Use the bundled worker via URL so it works in Vite.
-    // @ts-expect-error - Vite worker import
-    const workerMod = await import("pdfjs-dist/build/pdf.worker.min.mjs?url");
+    const workerMod: { default: string } = await import(
+      // @ts-expect-error - Vite worker URL import
+      "pdfjs-dist/build/pdf.worker.min.mjs?url"
+    );
     pdfjs.GlobalWorkerOptions.workerSrc = workerMod.default;
     const arrayBuffer = await file.arrayBuffer();
     const pdf = await pdfjs.getDocument({ data: arrayBuffer }).promise;
