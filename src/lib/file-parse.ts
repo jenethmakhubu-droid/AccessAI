@@ -30,10 +30,9 @@ export async function parseFile(file: File): Promise<ParsedFile> {
   if (lower.endsWith(".pdf") || file.type === "application/pdf") {
     const pdfjs = await import("pdfjs-dist");
     // Use the bundled worker via URL so it works in Vite.
-    const workerMod: { default: string } = await import(
-      // @ts-expect-error - Vite worker URL import
-      "pdfjs-dist/build/pdf.worker.min.mjs?url"
-    );
+    const workerMod = (await import(
+      /* @vite-ignore */ "pdfjs-dist/build/pdf.worker.min.mjs?url"
+    )) as { default: string };
     pdfjs.GlobalWorkerOptions.workerSrc = workerMod.default;
     const arrayBuffer = await file.arrayBuffer();
     const pdf = await pdfjs.getDocument({ data: arrayBuffer }).promise;
