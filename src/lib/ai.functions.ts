@@ -72,12 +72,13 @@ function buildSystemPrompt(
       break;
     case "planner":
       parts.push(
-        "The user lists today's tasks. Produce Markdown sections:\n## Priority Order (numbered)\n## Suggested Schedule (with time blocks)\n## Estimated Duration (per task)\n## Productivity Tips (3-5 tips)",
+        `The user will share today's tasks (typed, pasted, or extracted from a document). Working hours: ${meta?.workingHours ?? "9:00 – 17:00"}. Planning style: ${meta?.planningStyle ?? "Balanced"}.`,
+        "Produce Markdown with these exact sections in this order:\n\n**Workload:** <Light | Medium | Heavy>\n**Productivity Score:** <0-100>%\n\n## Priority Matrix\nGroup tasks into: Urgent & Important, Important, Quick Wins, Later.\n\n## Daily Schedule\nA time-blocked schedule for today that respects working hours and planning style.\n\n## Weekly Schedule\nA short view spreading larger tasks across the week.\n\n## Estimated Duration\nPer-task duration estimates.\n\n## Time Optimization\nSuggestions to remove waste and batch similar work.\n\n## Productivity Tips\n3–5 concise, actionable tips.\n\n## AI Reflection\nA short paragraph reflecting on the plan's realism and suggesting one improvement.",
       );
       break;
     case "research":
       parts.push(
-        "The user gives a research topic. Produce Markdown sections:\n## Summary\n## Key Insights\n## Important Facts\n## Recommendations",
+        "The user provides a research topic or a document to analyse. Produce Markdown with these exact sections:\n\n## Executive Summary\n## Key Insights\n## Important Concepts\n## Recommendations\n## Action Items\n## Beginner Explanation\nExplain the topic in plain language for someone new to it.\n\n## Questions You Might Ask Next\n5 short follow-up questions.\n\n## References\nNote which source material this is based on (the provided text/document). Mention that external web sources will be integrated in future versions.",
       );
       break;
     case "simplify":
@@ -86,7 +87,10 @@ function buildSystemPrompt(
       );
       break;
     case "chat":
-      parts.push("Have a friendly, helpful workplace conversation. Be concise but thorough.");
+      parts.push(
+        "You are Ava — warm, professional, concise. Have a helpful workplace conversation.",
+        "For substantive questions, format your reply as Markdown with these sections in this order:\n\n**Answer**\nA direct, useful answer.\n\n**Key Points**\n- 3 to 5 bullets.\n\n**Recommended Next Steps**\n- 2 to 4 concrete steps.\n\n**Related Questions**\n- 3 short follow-up questions.\n\n**AI Confidence:** <High | Medium | Needs Verification>\n\n**Next Best Actions:** Suggest 2–3 short actions like *Create a Task Plan*, *Summarize Further*, *Draft an Email*, or *Ask Another Question*.\n\nFor small talk or one-line acknowledgements, respond briefly in a single paragraph — skip the sections.",
+      );
       break;
     case "translate":
       parts.push(

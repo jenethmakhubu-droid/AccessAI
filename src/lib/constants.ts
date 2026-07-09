@@ -1,20 +1,32 @@
 export const LANGUAGES = [
   "English",
   "isiZulu",
-  "Afrikaans",
-  "Sesotho",
   "isiXhosa",
-] as const;
-
-export const FUTURE_LANGUAGES = [
+  "Sesotho",
+  "Setswana",
+  "Sepedi",
+  "Xitsonga",
+  "Tshivenda",
+  "siSwati",
+  "isiNdebele",
+  "Afrikaans",
   "French",
   "Portuguese",
   "Spanish",
-  "Arabic",
   "German",
-  "Chinese (Simplified)",
+  "Arabic",
   "Hindi",
   "Swahili",
+  "Mandarin Chinese",
+  "Japanese",
+  "Korean",
+] as const;
+
+export const FUTURE_LANGUAGES = [
+  "Italian",
+  "Dutch",
+  "Russian",
+  "Turkish",
 ];
 
 export const WORKPLACE_PROFILES = [
