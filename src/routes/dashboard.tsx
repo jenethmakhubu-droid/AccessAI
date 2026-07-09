@@ -1,16 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
+  ArrowRight,
   Briefcase,
   Calendar,
   FileText,
-  Globe2,
-  Lightbulb,
   Mail,
   MessagesSquare,
   NotebookPen,
   Search,
 } from "lucide-react";
 import { AppLayout } from "@/components/AppLayout";
+import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { usePreferences } from "@/lib/preferences";
 
@@ -19,22 +19,34 @@ export const Route = createFileRoute("/dashboard")({
   component: DashboardPage,
 });
 
-const QUICK = [
-  { icon: Mail, label: "Draft an Email", to: "/email", emoji: "✉️" },
-  { icon: FileText, label: "Summarize a Document", to: "/simplify", emoji: "📄" },
-  { icon: Calendar, label: "Plan My Day", to: "/planner", emoji: "📅" },
-  { icon: Globe2, label: "Translate Text", to: "/chat", emoji: "🌍" },
-  { icon: Lightbulb, label: "Explain Something", to: "/research", emoji: "💡" },
-  { icon: MessagesSquare, label: "Ask Ava", to: "/chat", emoji: "🤖" },
+const FLAGSHIP = [
+  {
+    icon: Calendar,
+    emoji: "📅",
+    title: "AI Task Planner",
+    desc: "Turn your to-dos into a prioritised, time-blocked schedule with a productivity score.",
+    to: "/planner",
+  },
+  {
+    icon: Search,
+    emoji: "📚",
+    title: "Research Assistant",
+    desc: "Summarise documents into insights, action items and a beginner-friendly explanation.",
+    to: "/research",
+  },
+  {
+    icon: MessagesSquare,
+    emoji: "🤖",
+    title: "Ask Ava",
+    desc: "Chat with Ava, your inclusive workplace AI, for answers, drafts and next best actions.",
+    to: "/chat",
+  },
 ] as const;
 
 const FEATURES = [
   { icon: Mail, title: "Email Assistant", desc: "Audience, tone, purpose — get subject, body and closing.", to: "/email" },
   { icon: NotebookPen, title: "Meeting Assistant", desc: "Summaries, decisions, action items, deadlines.", to: "/meeting" },
-  { icon: Calendar, title: "Task Planner", desc: "Priority order, schedule and productivity tips.", to: "/planner" },
-  { icon: Search, title: "Research Assistant", desc: "Summary, key insights, facts and recommendations.", to: "/research" },
   { icon: FileText, title: "Document Simplifier", desc: "Plain-language rewrite of long documents.", to: "/simplify" },
-  { icon: MessagesSquare, title: "Ava AI Chat", desc: "Conversational workplace assistant.", to: "/chat" },
 ];
 
 function DashboardPage() {
@@ -59,23 +71,34 @@ function DashboardPage() {
 
       <section className="mb-12">
         <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-widest mb-4">
-          Quick actions
+          Flagship tools
         </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-          {QUICK.map((q) => (
-            <Link key={q.label} to={q.to}>
-              <Card className="p-4 shadow-card hover:shadow-elevated hover:-translate-y-0.5 transition-all cursor-pointer h-full">
-                <div className="text-2xl mb-2">{q.emoji}</div>
-                <div className="font-medium text-sm leading-snug">{q.label}</div>
-              </Card>
-            </Link>
+        <div className="grid md:grid-cols-3 gap-4">
+          {FLAGSHIP.map((f) => (
+            <Card
+              key={f.title}
+              className="p-6 shadow-card hover:shadow-elevated transition-all flex flex-col gap-4"
+            >
+              <div className="flex items-center gap-3">
+                <div className="h-12 w-12 rounded-xl bg-gradient-hero text-primary-foreground grid place-items-center text-2xl shadow-elevated">
+                  {f.emoji}
+                </div>
+                <h3 className="font-serif text-xl leading-tight">{f.title}</h3>
+              </div>
+              <p className="text-sm text-muted-foreground leading-relaxed flex-1">{f.desc}</p>
+              <Link to={f.to}>
+                <Button className="w-full gap-2">
+                  Open <ArrowRight className="h-4 w-4" />
+                </Button>
+              </Link>
+            </Card>
           ))}
         </div>
       </section>
 
       <section>
         <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-widest mb-4">
-          All features
+          More tools
         </h2>
         <div className="grid sm:grid-cols-2 gap-4">
           {FEATURES.map((f) => (
