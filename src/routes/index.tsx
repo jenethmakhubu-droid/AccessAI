@@ -44,16 +44,7 @@ function Landing() {
           </div>
           <span className="font-serif text-xl">AccessAI</span>
         </Link>
-        <div className="flex items-center gap-2">
-          <Link to="/about">
-            <Button variant="ghost" size="sm">About</Button>
-          </Link>
-          <Link to="/dashboard">
-            <Button size="sm" className="gap-1.5">
-              Open app <ArrowRight className="h-4 w-4" />
-            </Button>
-          </Link>
-        </div>
+        <div />
       </nav>
 
       <section className="max-w-4xl mx-auto px-6 pt-16 pb-24 text-center space-y-8">
@@ -72,7 +63,7 @@ function Landing() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
           <Link to="/dashboard">
             <Button size="lg" className="gap-2 h-12 px-8 text-base shadow-elevated">
-              Get Started <ArrowRight className="h-5 w-5" />
+              Launch AccessAI <ArrowRight className="h-5 w-5" />
             </Button>
           </Link>
           <Link to="/about">
