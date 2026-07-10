@@ -2,17 +2,24 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Briefcase,
   Calendar,
+  Clock,
   FileText,
-  Globe2,
+  Image as ImageIcon,
   Lightbulb,
   Mail,
   MessagesSquare,
   NotebookPen,
   Search,
+  Sparkles,
+  BarChart3,
+  Globe2,
+  Trash2,
 } from "lucide-react";
 import { AppLayout } from "@/components/AppLayout";
+import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { usePreferences } from "@/lib/preferences";
+import { useActivity } from "@/lib/activity";
 
 export const Route = createFileRoute("/dashboard")({
   head: () => ({ meta: [{ title: "Dashboard — AccessAI" }] }),
@@ -20,12 +27,14 @@ export const Route = createFileRoute("/dashboard")({
 });
 
 const QUICK = [
-  { icon: Mail, label: "Draft an Email", to: "/email", emoji: "✉️" },
-  { icon: FileText, label: "Summarize a Document", to: "/simplify", emoji: "📄" },
-  { icon: Calendar, label: "Plan My Day", to: "/planner", emoji: "📅" },
-  { icon: Globe2, label: "Translate Text", to: "/chat", emoji: "🌍" },
-  { icon: Lightbulb, label: "Explain Something", to: "/research", emoji: "💡" },
-  { icon: MessagesSquare, label: "Ask Ava", to: "/chat", emoji: "🤖" },
+  { label: "Draft an Email", to: "/email", emoji: "✉️" },
+  { label: "Summarize a Document", to: "/simplify", emoji: "📄" },
+  { label: "Analyse a Report", to: "/research", emoji: "📊" },
+  { label: "Explain an Image", to: "/chat", emoji: "🖼" },
+  { label: "Plan My Day", to: "/planner", emoji: "📅" },
+  { label: "Translate Text", to: "/chat", emoji: "🌍" },
+  { label: "Explain Something", to: "/research", emoji: "💡" },
+  { label: "Chat with Ava", to: "/chat", emoji: "🤖" },
 ] as const;
 
 const FEATURES = [
@@ -39,6 +48,7 @@ const FEATURES = [
 
 function DashboardPage() {
   const { prefs } = usePreferences();
+  const { activities, clear } = useActivity();
   return (
     <AppLayout>
       <section className="mb-10 space-y-3">
@@ -61,7 +71,7 @@ function DashboardPage() {
         <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-widest mb-4">
           Quick actions
         </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
           {QUICK.map((q) => (
             <Link key={q.label} to={q.to}>
               <Card className="p-4 shadow-card hover:shadow-elevated hover:-translate-y-0.5 transition-all cursor-pointer h-full">
@@ -71,6 +81,44 @@ function DashboardPage() {
             </Link>
           ))}
         </div>
+      </section>
+
+      <section className="mb-12">
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-widest flex items-center gap-2">
+            <Clock className="h-3.5 w-3.5" /> Recent activity
+          </h2>
+          {activities.length > 0 && (
+            <Button variant="ghost" size="sm" onClick={clear} className="gap-1 text-xs">
+              <Trash2 className="h-3.5 w-3.5" /> Clear
+            </Button>
+          )}
+        </div>
+        {activities.length === 0 ? (
+          <Card className="p-6 text-center shadow-card border-dashed">
+            <Sparkles className="h-6 w-6 mx-auto text-primary mb-2" />
+            <div className="font-medium">You're ready to get started.</div>
+            <p className="text-sm text-muted-foreground mt-1">
+              Choose one of the actions above or upload a document.
+            </p>
+          </Card>
+        ) : (
+          <div className="grid sm:grid-cols-2 gap-3">
+            {activities.slice(0, 6).map((a) => (
+              <Card key={a.id} className="p-4 shadow-card flex items-center gap-3">
+                <div className="h-9 w-9 rounded-lg bg-primary/10 text-primary grid place-items-center">
+                  {iconFor(a.type)}
+                </div>
+                <div className="min-w-0">
+                  <div className="text-sm font-medium truncate">{a.label}</div>
+                  <div className="text-xs text-muted-foreground">
+                    {new Date(a.at).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
+        )}
       </section>
 
       <section>
@@ -95,4 +143,17 @@ function DashboardPage() {
       </section>
     </AppLayout>
   );
+}
+
+function iconFor(type: string) {
+  const cls = "h-4 w-4";
+  switch (type) {
+    case "email": return <Mail className={cls} />;
+    case "meeting": return <NotebookPen className={cls} />;
+    case "planner": return <Calendar className={cls} />;
+    case "research": return <BarChart3 className={cls} />;
+    case "simplify": return <FileText className={cls} />;
+    case "chat": return <MessagesSquare className={cls} />;
+    default: return <Sparkles className={cls} />;
+  }
 }
