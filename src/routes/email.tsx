@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { EMAIL_AUDIENCES, EMAIL_TONES, LANGUAGES } from "@/lib/constants";
+import { AudienceCombobox } from "@/components/AudienceCombobox";
 import { generateAi } from "@/lib/ai.functions";
 import { usePreferences } from "@/lib/preferences";
 
@@ -68,12 +69,11 @@ function EmailPage() {
       <Card className="p-6 shadow-card space-y-5">
         <div className="grid sm:grid-cols-3 gap-4">
           <Field label="Audience">
-            <Select value={audience} onValueChange={setAudience}>
-              <SelectTrigger><SelectValue /></SelectTrigger>
-              <SelectContent>
-                {EMAIL_AUDIENCES.map((a) => <SelectItem key={a} value={a}>{a}</SelectItem>)}
-              </SelectContent>
-            </Select>
+            <AudienceCombobox
+              value={audience}
+              onChange={setAudience}
+              options={EMAIL_AUDIENCES}
+            />
           </Field>
           <Field label="Tone">
             <Select value={tone} onValueChange={setTone}>
