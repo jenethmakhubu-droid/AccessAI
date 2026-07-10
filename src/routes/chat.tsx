@@ -10,6 +10,7 @@ import { Card } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { generateAi } from "@/lib/ai.functions";
 import { usePreferences } from "@/lib/preferences";
+import { useActivity } from "@/lib/activity";
 
 export const Route = createFileRoute("/chat")({
   head: () => ({ meta: [{ title: "Chat with Ava — AccessAI" }] }),
@@ -20,6 +21,7 @@ type Msg = { role: "user" | "assistant"; content: string };
 
 function ChatPage() {
   const { prefs } = usePreferences();
+  const { log } = useActivity();
   const [messages, setMessages] = useState<Msg[]>([
     {
       role: "assistant",
@@ -47,6 +49,7 @@ function ChatPage() {
         data: { task: "chat", input: text, prefs, history },
       });
       setMessages((m) => [...m, { role: "assistant", content: res.text }]);
+      log("chat", "Chat message");
     } catch (e) {
       toast.error(e instanceof Error ? e.message : "Something went wrong");
     } finally {

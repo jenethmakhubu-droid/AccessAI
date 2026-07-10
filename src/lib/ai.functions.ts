@@ -24,6 +24,14 @@ const InputSchema = z.object({
   ]),
   input: z.string().min(1),
   meta: z.record(z.string(), z.string()).optional(),
+  attachment: z
+    .object({
+      name: z.string(),
+      mimeType: z.string(),
+      dataBase64: z.string(),
+      kind: z.enum(["image", "document"]),
+    })
+    .optional(),
   prefs: PrefsSchema.default({
     language: "English",
     readingLevel: "Standard",
@@ -109,10 +117,64 @@ export const generateAi = createServerFn({ method: "POST" })
     const key = process.env.LOVABLE_API_KEY;
     if (!key) throw new Error("Missing LOVABLE_API_KEY");
 
-    const gateway = createLovableAiGatewayProvider(key);
-    const model = gateway("google/gemini-3-flash-preview");
     const system = buildSystemPrompt(data.task, data.prefs, data.meta);
 
+    // When we have an attachment, call the Lovable AI Gateway (OpenAI-compatible)
+    // directly with typed content blocks so we can pass image_url / file parts.
+    if (data.attachment) {
+      const userContent: unknown[] = [];
+      if (data.input) userContent.push({ type: "text", text: data.input });
+      if (data.attachment.kind === "image") {
+        userContent.push({
+          type: "image_url",
+          image_url: {
+            url: `data:${data.attachment.mimeType};base64,${data.attachment.dataBase64}`,
+          },
+        });
+      } else {
+        userContent.push({
+          type: "file",
+          file: {
+            filename: data.attachment.name,
+            file_data: `data:${data.attachment.mimeType};base64,${data.attachment.dataBase64}`,
+          },
+        });
+      }
+      const body = {
+        model: "google/gemini-3-flash-preview",
+        messages: [
+          { role: "system", content: system },
+          ...(data.history ?? []).map((m) => ({ role: m.role, content: m.content })),
+          { role: "user", content: userContent },
+        ],
+      };
+      const resp = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Lovable-API-Key": key,
+        },
+        body: JSON.stringify(body),
+      });
+      if (!resp.ok) {
+        const errText = await resp.text().catch(() => "");
+        throw new Error(
+          resp.status === 429
+            ? "Rate limit reached. Please try again shortly."
+            : resp.status === 402
+              ? "AI credits exhausted. Please top up your workspace."
+              : `AI request failed (${resp.status}): ${errText.slice(0, 200)}`,
+        );
+      }
+      const json = (await resp.json()) as {
+        choices?: { message?: { content?: string } }[];
+      };
+      const text = json.choices?.[0]?.message?.content ?? "";
+      return { text };
+    }
+
+    const gateway = createLovableAiGatewayProvider(key);
+    const model = gateway("google/gemini-3-flash-preview");
     const messages =
       data.history && data.history.length > 0
         ? [

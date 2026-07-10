@@ -14,6 +14,8 @@ export const Route = createFileRoute("/simplify")({
       placeholder="Paste the document text here..."
       cta="Simplify document"
       rows={16}
+      activityLabel="Document simplified"
+      suggestions={["Plain language rewrite","Bullet-point summary","Key takeaways"]}
     />
   ),
 });

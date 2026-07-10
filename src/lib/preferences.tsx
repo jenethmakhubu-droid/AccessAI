@@ -9,6 +9,14 @@ export type Preferences = {
   readAloud: boolean;
   simplify: boolean;
   workplaceProfile?: WorkplaceProfile;
+  dyslexiaFont: boolean;
+  reducedMotion: boolean;
+  highlightImportant: boolean;
+  beginnerFriendly: boolean;
+  keyboardTips: boolean;
+  focusIndicators: boolean;
+  largerTargets: boolean;
+  savePrefs: boolean;
 };
 
 const DEFAULTS: Preferences = {
@@ -18,6 +26,14 @@ const DEFAULTS: Preferences = {
   largerText: false,
   readAloud: false,
   simplify: false,
+  dyslexiaFont: false,
+  reducedMotion: false,
+  highlightImportant: false,
+  beginnerFriendly: false,
+  keyboardTips: false,
+  focusIndicators: false,
+  largerTargets: false,
+  savePrefs: true,
 };
 
 const KEY = "accessai:prefs";
@@ -45,11 +61,17 @@ export function PreferencesProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (!hydrated) return;
     try {
-      localStorage.setItem(KEY, JSON.stringify(prefs));
+      if (prefs.savePrefs) localStorage.setItem(KEY, JSON.stringify(prefs));
+      else localStorage.removeItem(KEY);
     } catch {}
     const root = document.documentElement;
     root.classList.toggle("high-contrast", prefs.highContrast);
     root.classList.toggle("large-text", prefs.largerText);
+    root.classList.toggle("dyslexia-font", prefs.dyslexiaFont);
+    root.classList.toggle("reduced-motion", prefs.reducedMotion);
+    root.classList.toggle("highlight-important", prefs.highlightImportant);
+    root.classList.toggle("focus-indicators", prefs.focusIndicators);
+    root.classList.toggle("larger-targets", prefs.largerTargets);
   }, [prefs, hydrated]);
 
   const value = useMemo<Ctx>(

@@ -33,6 +33,18 @@ export const WORKPLACE_PROFILES = [
 
 export const READING_LEVELS = ["Standard", "Simple English", "Beginner"] as const;
 
+export const ACCEPTED_DOC_EXT = [
+  ".pdf", ".doc", ".docx", ".txt", ".rtf", ".md",
+  ".xls", ".xlsx", ".csv",
+  ".ppt", ".pptx",
+] as const;
+
+export const ACCEPTED_IMAGE_EXT = [
+  ".png", ".jpg", ".jpeg", ".webp", ".gif", ".bmp", ".tiff", ".tif",
+] as const;
+
+export const TEXT_READABLE_EXT = [".txt", ".md", ".csv", ".rtf"] as const;
+
 export const EMAIL_TONES = [
   "Professional",
   "Friendly",

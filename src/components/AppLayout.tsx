@@ -12,7 +12,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import type { ReactNode } from "react";
-import { PreferencesSheet } from "./PreferencesSheet";
+import { AccessibilityDrawer } from "./AccessibilityDrawer";
 import {
   Sidebar,
   SidebarContent,
@@ -110,7 +110,7 @@ export function AppLayout({ children }: { children: ReactNode }) {
                 Making workplace AI accessible to everyone.
               </div>
             </div>
-            <PreferencesSheet />
+            <AccessibilityDrawer />
           </header>
           <main className="flex-1 px-4 sm:px-8 py-8 max-w-5xl w-full mx-auto">
             {children}

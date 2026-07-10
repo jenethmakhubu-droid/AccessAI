@@ -21,6 +21,7 @@ import { EMAIL_AUDIENCES, EMAIL_TONES, LANGUAGES } from "@/lib/constants";
 import { AudienceCombobox } from "@/components/AudienceCombobox";
 import { generateAi } from "@/lib/ai.functions";
 import { usePreferences } from "@/lib/preferences";
+import { useActivity } from "@/lib/activity";
 
 export const Route = createFileRoute("/email")({
   head: () => ({ meta: [{ title: "Email Assistant — AccessAI" }] }),
@@ -29,6 +30,7 @@ export const Route = createFileRoute("/email")({
 
 function EmailPage() {
   const { prefs } = usePreferences();
+  const { log } = useActivity();
   const [audience, setAudience] = useState("Colleague");
   const [tone, setTone] = useState("Professional");
   const [language, setLanguage] = useState(prefs.language);
@@ -50,6 +52,7 @@ function EmailPage() {
         },
       });
       setOutput(res.text);
+      log("email", "Email generated");
     } catch (e) {
       toast.error(e instanceof Error ? e.message : "Something went wrong");
     } finally {

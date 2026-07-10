@@ -187,6 +187,49 @@
     --card-foreground: oklch(1 0 0);
     --border: oklch(1 0 0);
   }
+
+  .dyslexia-font,
+  .dyslexia-font body,
+  .dyslexia-font h1,
+  .dyslexia-font h2,
+  .dyslexia-font h3,
+  .dyslexia-font h4 {
+    font-family: "Comic Sans MS", "OpenDyslexic", Verdana, Tahoma, sans-serif !important;
+    letter-spacing: 0.02em;
+    word-spacing: 0.06em;
+  }
+
+  .reduced-motion *,
+  .reduced-motion *::before,
+  .reduced-motion *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .highlight-important strong,
+  .highlight-important b,
+  .highlight-important mark {
+    background: color-mix(in oklch, var(--accent) 30%, transparent);
+    padding: 0 0.15em;
+    border-radius: 0.25em;
+  }
+
+  .focus-indicators :focus-visible {
+    outline: 3px solid var(--accent) !important;
+    outline-offset: 2px !important;
+    border-radius: 4px;
+  }
+
+  .larger-targets button,
+  .larger-targets a,
+  .larger-targets [role="button"],
+  .larger-targets input[type="checkbox"],
+  .larger-targets input[type="radio"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
 }
 
 @theme inline {
