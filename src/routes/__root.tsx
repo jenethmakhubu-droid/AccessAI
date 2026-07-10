@@ -87,14 +87,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "AccessAI is an AI-powered, inclusive workplace assistant. Draft emails, summarise meetings, plan your day, translate and simplify — accessible to everyone.",
       },
       { name: "author", content: "AccessAI" },
-      { property: "og:title", content: "AccessAI — Inclusive workplace AI" },
+      { property: "og:title", content: "AccessAI — Making workplace AI accessible to everyone" },
       {
         property: "og:description",
         content:
-          "Productivity tools should adapt to people — not the other way around.",
+          "AccessAI is an AI-powered, inclusive workplace assistant. Draft emails, summarise meetings, plan your day, translate and simplify — accessible to everyone.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "AccessAI — Making workplace AI accessible to everyone" },
+      { name: "twitter:description", content: "AccessAI is an AI-powered, inclusive workplace assistant. Draft emails, summarise meetings, plan your day, translate and simplify — accessible to everyone." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b742e9a3-f7a1-4e42-8013-98e161254001/id-preview-311ffd8f--c57822af-bf96-4598-bde4-87ae237360ea.lovable.app-1783689781136.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b742e9a3-f7a1-4e42-8013-98e161254001/id-preview-311ffd8f--c57822af-bf96-4598-bde4-87ae237360ea.lovable.app-1783689781136.png" },
     ],
     links: [
       {
