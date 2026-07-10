@@ -14,6 +14,8 @@ export const Route = createFileRoute("/research")({
       placeholder="e.g. Best practices for hybrid team communication"
       cta="Research topic"
       rows={4}
+      activityLabel="Research analysed"
+      suggestions={["Summarise findings","Explain simply","Create study notes"]}
     />
   ),
 });

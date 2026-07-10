@@ -14,6 +14,8 @@ export const Route = createFileRoute("/meeting")({
       placeholder="Paste meeting notes here..."
       cta="Summarise meeting"
       rows={14}
+      activityLabel="Meeting summarised"
+      suggestions={["Generate follow-up email","Extract action items","Create task list"]}
     />
   ),
 });
