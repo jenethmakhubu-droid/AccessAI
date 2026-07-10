@@ -6,10 +6,10 @@ import { AppLayout } from "./AppLayout";
 import { AiResponse } from "./AiResponse";
 import { PageHeader } from "./PageHeader";
 import { Button } from "./ui/button";
-import { Card } from "./ui/card";
-import { Textarea } from "./ui/textarea";
+import { SmartInput, type SmartInputValue } from "./SmartInput";
 import { generateAi } from "@/lib/ai.functions";
 import { usePreferences } from "@/lib/preferences";
+import { useActivity } from "@/lib/activity";
 
 type Task = "meeting" | "planner" | "research" | "simplify";
 
@@ -22,6 +22,9 @@ export function SimplePromptFeature({
   placeholder,
   cta,
   rows = 10,
+  allowUploads = true,
+  activityLabel,
+  suggestions,
 }: {
   task: Task;
   icon: LucideIcon;
@@ -31,18 +34,39 @@ export function SimplePromptFeature({
   placeholder: string;
   cta: string;
   rows?: number;
+  allowUploads?: boolean;
+  activityLabel: string;
+  suggestions?: string[];
 }) {
   const { prefs } = usePreferences();
-  const [input, setInput] = useState("");
+  const { log } = useActivity();
+  const [value, setValue] = useState<SmartInputValue>({ text: "" });
   const [output, setOutput] = useState("");
   const [loading, setLoading] = useState(false);
 
   async function run() {
-    if (!input.trim()) return toast.error("Add some text first.");
+    if (!value.text.trim() && !value.attachment) {
+      return toast.error("Add some text or upload a file first.");
+    }
     setLoading(true);
     try {
-      const res = await generateAi({ data: { task, input, prefs } });
+      const res = await generateAi({
+        data: {
+          task,
+          input: value.text.trim() || `Please analyse the attached ${value.attachment?.kind ?? "content"}.`,
+          prefs,
+          attachment: value.attachment
+            ? {
+                name: value.attachment.name,
+                mimeType: value.attachment.mimeType,
+                dataBase64: value.attachment.dataBase64,
+                kind: value.attachment.kind,
+              }
+            : undefined,
+        },
+      });
       setOutput(res.text);
+      log(task, activityLabel);
     } catch (e) {
       toast.error(e instanceof Error ? e.message : "Something went wrong");
     } finally {
@@ -53,20 +77,46 @@ export function SimplePromptFeature({
   return (
     <AppLayout>
       <PageHeader icon={icon} eyebrow={eyebrow} title={title} description={description} />
-      <Card className="p-6 shadow-card space-y-4">
-        <Textarea
-          rows={rows}
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder={placeholder}
-          className="resize-y"
+      {allowUploads ? (
+        <SmartInput
+          value={value}
+          onChange={setValue}
+          textPlaceholder={placeholder}
+          textRows={rows}
         />
-        <div className="flex justify-end">
-          <Button onClick={run} disabled={loading} size="lg" className="gap-2">
-            <Sparkles className="h-4 w-4" /> {loading ? "Working..." : cta}
-          </Button>
+      ) : (
+        <SmartInput
+          value={value}
+          onChange={setValue}
+          textPlaceholder={placeholder}
+          textRows={rows}
+          allowDocuments={false}
+          allowImages={false}
+        />
+      )}
+
+      {suggestions && (value.text || value.attachment) && !output && (
+        <div className="mt-4 flex flex-wrap gap-2">
+          <span className="text-xs text-muted-foreground pt-1.5">✨ Smart suggestions:</span>
+          {suggestions.map((s) => (
+            <Button
+              key={s}
+              size="sm"
+              variant="secondary"
+              onClick={() => setValue((v) => ({ ...v, text: (v.text ? v.text + "\n\n" : "") + s }))}
+            >
+              ✨ {s}
+            </Button>
+          ))}
         </div>
-      </Card>
+      )}
+
+      <div className="mt-4 flex justify-end">
+        <Button onClick={run} disabled={loading} size="lg" className="gap-2">
+          <Sparkles className="h-4 w-4" /> {loading ? "Working…" : cta}
+        </Button>
+      </div>
+
       <div className="mt-6">
         <AiResponse content={output} loading={loading} onReplace={setOutput} onRegenerate={run} />
       </div>
