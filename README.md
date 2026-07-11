@@ -189,33 +189,37 @@ http://localhost:8080
 
 # 📸 Screenshots
 
-## Homepage
 
-*Add homepage screenshot here.*
+<img width="1557" height="863" alt="image" src="https://github.com/user-attachments/assets/119b9803-ae7a-4736-9f80-ecf0e4dcf6e9" />
+
 
 ---
 
 ## Dashboard
 
-*Add dashboard screenshot here.*
+<img width="1917" height="917" alt="image" src="https://github.com/user-attachments/assets/67d0ba3d-8a21-4602-8a4e-39f7dcecd35f" />
+
 
 ---
 
 ## Email Assistant
 
-*Add Email Assistant screenshot here.*
+<img width="1917" height="910" alt="image" src="https://github.com/user-attachments/assets/abe55569-87c6-4e6e-aa45-682cb977e0e2" />
+
 
 ---
 
 ## Accessibility Mode
 
-*Add Accessibility Settings screenshot here.*
+<img width="427" height="907" alt="image" src="https://github.com/user-attachments/assets/5866d551-da84-4536-b5e4-11d461d04f8f" />
+
 
 ---
 
 ## Chat with Ava
 
-*Add Chat with Ava screenshot here.*
+<img width="1918" height="896" alt="image" src="https://github.com/user-attachments/assets/9c450001-bc66-4df4-8a0c-02a380bcdb08" />
+
 
 ---
 
@@ -245,8 +249,8 @@ The project showcases practical AI application development, user-centred design,
 
 **Jeneth Makhubu**
 
-- GitHub: https://github.com/yourusername
-- LinkedIn: *(Optional)*
+- GitHub: https://github.com/jenethmakhubu-droid
+- LinkedIn: 
 
 ---
 
@@ -262,11 +266,11 @@ You are welcome to explore the source code, learn from the implementation, and u
 
 **Live Demo**
 
-https://your-live-accessai-url.com
+(https://accessai-spark.lovable.app)
 
 **GitHub Repository**
 
-https://github.com/yourusername/AccessAI
+https://github.com/jenethmakhubu-droid/AccessAI
 
 ---
 
