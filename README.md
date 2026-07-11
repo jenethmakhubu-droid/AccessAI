@@ -1,100 +1,107 @@
-# AccessAI
+# 🤖 AccessAI
 
 > **Making workplace AI accessible to everyone.**
 
-AccessAI is an AI-powered **Inclusive Workplace Productivity Assistant** designed to help professionals work smarter while promoting accessibility, multilingual communication, and inclusive design. Built with React and TypeScript, AccessAI ensures that workplace technology adapts to people — not the other way around.
+AccessAI is an **AI-powered Inclusive Workplace Productivity Assistant** designed to help professionals work smarter through accessible, multilingual, and user-friendly AI tools. Built with **Lovable**, **React**, **TypeScript**, and **GitHub**, AccessAI demonstrates how artificial intelligence can improve workplace productivity while ensuring technology is accessible to everyone.
 
 ---
 
-## Why AccessAI?
+## 🌍 Overview
 
-Workplace AI tools have transformed how professionals write, plan, research, and communicate. However, many of these tools are not designed with accessibility and inclusion in mind. Professionals with different abilities, language backgrounds, communication preferences, and workplace experiences often face unnecessary barriers when using productivity software.
+Modern workplaces increasingly rely on AI to improve productivity, communication, and decision-making. However, many AI tools overlook accessibility and inclusivity, creating barriers for users with different abilities, language preferences, and professional backgrounds.
 
-AccessAI was built on the belief that **workplace AI should adapt to people with diverse needs**. Whether a user prefers simplified language, relies on assistive technologies, communicates in multiple languages, or works in a specialized industry, AccessAI is designed to support them from the very first interaction — no account required.
+AccessAI was created to bridge this gap by providing an AI-powered workplace assistant that is simple, accessible, and available to everyone—without requiring users to create an account.
 
----
-
-## Project Overview
-
-AccessAI combines modern AI-powered productivity features with inclusive design principles. It offers a suite of workplace tools that help users complete common professional tasks more efficiently, while ensuring the experience remains accessible, responsive, and easy to use across devices.
-
-This project is suitable for:
-
-- Academic presentations and assignments
-- Professional portfolios
-- Accessibility and inclusive design demonstrations
-- AI-powered SaaS product showcases
+The application combines workplace productivity tools with accessibility-first design principles, ensuring users can complete everyday professional tasks efficiently and confidently.
 
 ---
 
-## Problem Statement
+# ✨ Project Highlights
 
-Professionals spend a significant portion of their time on repetitive workplace tasks, including:
-
-- Writing and replying to emails
-- Summarizing meetings and extracting action items
-- Planning tasks and prioritizing schedules
-- Researching information and gathering insights
-- Simplifying complex documents for different audiences
-
-While many AI productivity tools exist, they often:
-
-- Ignore accessibility needs such as visual contrast, text size, and screen reader support
-- Assume a one-size-fits-all communication style
-- Require user accounts or subscriptions before allowing access
-- Offer limited multilingual or plain-language support
-
-AccessAI addresses these gaps by placing **inclusion, accessibility, and flexibility** at the center of the user experience.
+- ♿ Accessibility-first design
+- 🤖 AI-powered workplace productivity assistant
+- 🌍 Multilingual communication support
+- 📱 Responsive design for desktop and mobile
+- 🚫 No sign-up or login required
+- 💼 Suitable for multiple professional industries
+- 🎯 Clean, modern and intuitive interface
 
 ---
 
-## Solution
+# 🎯 Problem Statement
 
-AccessAI provides a clean, responsive, and accessible workspace where users can instantly access AI-powered productivity tools. Every feature is designed with inclusive defaults:
+Professionals spend a significant amount of time performing repetitive workplace tasks such as:
 
-- Clear, readable interfaces with adjustable text sizes
-- High contrast mode for improved visibility
-- Text-to-speech support for reading AI responses aloud
-- Plain-language explanations and translation options
-- Optional workplace profiles to personalize AI responses
-- Full keyboard navigation and mobile responsiveness
+- Writing professional emails
+- Summarising lengthy documents
+- Analysing reports
+- Planning daily workloads
+- Translating workplace communication
+- Understanding complex information
 
-By combining practical AI assistance with inclusive design, AccessAI helps professionals communicate more effectively, plan more efficiently, and access information more confidently.
+Although many AI productivity tools exist, they often:
+
+- Have limited accessibility features
+- Require users to create accounts before use
+- Provide limited multilingual support
+- Use complex interfaces that are difficult for some users to navigate
+
+AccessAI addresses these challenges by combining productivity, accessibility, and inclusive design into one easy-to-use platform.
 
 ---
 
-## Features
+# 💡 Solution
+
+AccessAI provides an accessible digital workspace where users can instantly access AI-powered workplace tools.
+
+Key design principles include:
+
+- Accessibility by default
+- Multilingual communication
+- Responsive user interface
+- Inclusive workplace design
+- Simple and intuitive navigation
+- No account required
+
+The goal is to help professionals complete everyday tasks more efficiently while ensuring the application remains usable for people with different abilities, languages, and communication preferences.
+
+---
+
+# 🚀 Features
 
 | Feature | Description |
-|--------|-------------|
-| **Email Assistant** | Generate professional workplace emails tailored to audience, tone, and purpose. Includes a searchable audience combobox with suggested and custom options. |
-| **Meeting Assistant** | Paste meeting notes and receive a structured summary with key decisions, action items, deadlines, and responsibilities. |
-| **Task Planner** | Enter a list of tasks and get a prioritized schedule with time blocks, duration estimates, and productivity tips. |
-| **Research Assistant** | Submit a research topic and receive a concise summary with key insights, important facts, and recommendations. |
-| **Document Simplifier** | Paste complex documents and receive a simplified version with plain-language explanations and key takeaways. |
-| **Ava AI Assistant** | Have a conversational workplace chat with an AI assistant that answers questions, offers guidance, and supports daily productivity. |
+|---------|-------------|
+| 📧 **Email Assistant** | Generate professional workplace emails with customizable audience, tone, language, and additional context. |
+| 📄 **Document Summarizer** | Summarize uploaded or pasted documents into concise, easy-to-read key points. |
+| 📊 **Analyse a Report** | Extract important findings, insights, and recommendations from reports. |
+| 📅 **Task Planner** | Organise daily tasks into a structured and prioritised schedule with productivity suggestions. |
+| 🌍 **Translate Text** | Translate workplace communication into multiple languages. |
+| 💡 **Explain Something** | Simplify complex topics into clear, beginner-friendly explanations. |
+| 🤖 **Chat with Ava** | Interact with an AI workplace assistant for guidance, questions, and productivity support. |
 
 ---
 
-## Accessibility Features
+# ♿ Accessibility Features
 
-Accessibility is integrated into AccessAI rather than treated as a separate feature. The following inclusive options are built in:
+Accessibility is integrated into the application rather than added as an afterthought.
 
 | Feature | Description |
-|--------|-------------|
-| **High Contrast Mode** | Improves visibility for users with low vision or visual impairments. |
-| **Larger Text** | Increases text size across the interface for better readability. |
-| **Read Aloud** | Converts AI-generated responses into speech using the browser's text-to-speech engine. |
-| **Explain in Simple Language** | Rewrites responses using plain, beginner-friendly language. |
-| **Translation** | Translates AI outputs into multiple languages, including local South African languages and global options. |
-| **Responsive Design** | Works seamlessly on desktops, tablets, and mobile devices. |
-| **Keyboard Navigation** | All interactive elements are accessible via keyboard for users who do not use a mouse. |
+|---------|-------------|
+| 🔊 **Read Aloud** | Reads AI responses aloud using browser text-to-speech functionality. |
+| 🌍 **Multilingual Support** | Supports multiple South African and international languages. |
+| 📖 **Simple Language** | Converts complex responses into easy-to-understand language. |
+| 🎨 **High Contrast Mode** | Improves visibility for users with visual impairments. |
+| 🔠 **Larger Text** | Increases text size for improved readability. |
+| ⌨️ **Keyboard Navigation** | Supports users who navigate without a mouse. |
+| 📱 **Responsive Design** | Optimised for desktop, tablet, and mobile devices. |
 
 ---
 
-## Workplace Profiles
+# 🏢 Workplace Profiles
 
-Users can optionally select a workplace profile to personalize AI responses without creating an account. Available profiles include:
+AccessAI can tailor responses for different professional environments without requiring user accounts.
+
+Available workplace profiles include:
 
 - Information Technology
 - Education
@@ -103,132 +110,174 @@ Users can optionally select a workplace profile to personalize AI responses with
 - Human Resources
 - Marketing
 - Retail
-- Legal
 - Government
+- Legal
 - Business
 - Other
 
-These profiles help AccessAI tailor examples, terminology, and tone to match the user's professional context.
+These profiles help provide more relevant terminology, examples, and communication styles.
 
 ---
 
-## Technologies Used
+# 🛠 Technologies Used
 
 | Technology | Purpose |
 |------------|---------|
+| **Lovable** | AI-assisted application design and development |
 | **React** | Frontend user interface |
-| **TypeScript** | Type-safe development |
-| **Lovable** | Rapid AI-assisted development and deployment |
+| **TypeScript** | Type-safe application development |
 | **GitHub** | Version control and project hosting |
-| **OpenAI API** | Future integration point for AI completions |
-| **Gemini API** | Future integration point for AI completions |
+| **Responsive Design** | Cross-device compatibility |
 
 ---
 
-## Project Structure
+# 📂 Project Structure
 
 ```text
 AccessAI/
-├── public/                 # Static assets
+│
+├── public/
 ├── src/
-│   ├── components/         # Reusable React components
-│   ├── hooks/              # Custom React hooks
-│   ├── lib/                # Utility functions, constants, and AI logic
-│   ├── routes/             # Application pages and routes
-│   ├── styles.css          # Global styles and design tokens
+│   ├── components/
+│   ├── hooks/
+│   ├── lib/
+│   ├── routes/
+│   ├── styles/
 │   └── ...
-├── package.json            # Project dependencies and scripts
-├── tsconfig.json           # TypeScript configuration
-├── vite.config.ts          # Vite build configuration
-└── README.md               # Project documentation
+│
+├── package.json
+├── tsconfig.json
+├── vite.config.ts
+└── README.md
 ```
 
-> **Note:** This project uses file-based routing through TanStack Start. Route files are located in `src/routes/`.
-
 ---
 
-## Installation
+# ⚙️ Installation
 
-Follow these steps to run AccessAI locally using **npm**:
+Clone the repository
 
-1. **Clone the repository**
+```bash
+git clone https://github.com/YourUsername/AccessAI.git
+```
 
-   ```bash
-   git clone <repository-url>
-   cd AccessAI
-   ```
+Navigate into the project
 
-2. **Install dependencies**
+```bash
+cd AccessAI
+```
 
-   ```bash
-   npm install
-   ```
+Install dependencies
 
-3. **Start the development server**
+```bash
+npm install
+```
 
-   ```bash
-   npm run dev
-   ```
+Run the development server
 
-4. **Open the application**
+```bash
+npm run dev
+```
 
-   Navigate to `http://localhost:8080` in your browser.
-
-> **Note:** Some AI features require an API key. Add your key to the appropriate environment variable or configuration file as described in the project setup notes.
-
----
-
-## Future Enhancements
-
-The following improvements are planned for future versions of AccessAI:
-
-- **Voice Commands** — Allow users to interact with AccessAI using speech input.
-- **OCR Document Support** — Upload images or scanned documents for summarization and simplification.
-- **Calendar Integration** — Connect with calendar services to schedule tasks and meetings automatically.
-- **Additional Languages** — Expand translation and language support for more global and regional languages.
-- **AI Personalization** — Learn user preferences over time to deliver increasingly tailored responses.
-- **Offline Mode** — Enable core features to work without a constant internet connection.
-
----
-
-## About
-
-> AccessAI was created with the belief that productivity tools should adapt to people — not the other way around. By combining AI-powered workplace assistance with accessibility and inclusive design, AccessAI helps professionals work more efficiently and confidently.
-
----
-
-## Author
-
-- **Name:** [Your Name]
-- **GitHub:** [Your GitHub Profile URL]
-- **LinkedIn:** [Your LinkedIn Profile URL]
-
----
-
-## License
-
-This project is intended for **educational and portfolio use**. You are welcome to explore, modify, and present this project as part of academic coursework, personal portfolios, or professional demonstrations. Commercial use or redistribution requires explicit permission from the author.
-
----
-
-## Screenshots
-
-> _Screenshots and demo media can be added here once the application is finalized._
+Open your browser
 
 ```text
-[Homepage Screenshot]
-[Email Assistant Screenshot]
-[Accessibility Settings Screenshot]
+http://localhost:8080
 ```
 
 ---
 
-## Repository Links
+# 📸 Screenshots
 
-- **Live Demo:** [Add live deployment URL here]
-- **Source Code:** [Add GitHub repository URL here]
-- **Documentation:** [Add documentation link if available]
+## Homepage
+
+*Add homepage screenshot here.*
 
 ---
 
-_Thank you for exploring AccessAI. Together, we can build workplace technology that works for everyone._
+## Dashboard
+
+*Add dashboard screenshot here.*
+
+---
+
+## Email Assistant
+
+*Add Email Assistant screenshot here.*
+
+---
+
+## Accessibility Mode
+
+*Add Accessibility Settings screenshot here.*
+
+---
+
+## Chat with Ava
+
+*Add Chat with Ava screenshot here.*
+
+---
+
+# 🔮 Future Enhancements
+
+Future versions of AccessAI may include:
+
+- 🎤 Voice commands
+- ☁️ Cloud storage integration
+- 📅 Calendar integration
+- 📄 OCR support for scanned documents
+- 🌍 Additional language support
+- 📱 Dedicated mobile application
+- 🧠 Smarter AI personalisation
+
+---
+
+# 🎓 Project Purpose
+
+AccessAI was developed as an academic project to demonstrate how Artificial Intelligence can improve workplace productivity while promoting accessibility, inclusivity, and responsible AI design.
+
+The project showcases practical AI application development, user-centred design, prompt engineering, and modern web development technologies.
+
+---
+
+# 👩‍💻 Author
+
+**Jeneth Makhubu**
+
+- GitHub: https://github.com/yourusername
+- LinkedIn: *(Optional)*
+
+---
+
+# 📜 License
+
+This project was developed for educational and portfolio purposes.
+
+You are welcome to explore the source code, learn from the implementation, and use it as inspiration for your own projects. Please provide appropriate credit if significant portions of the project are reused.
+
+---
+
+# 🌐 Repository Links
+
+**Live Demo**
+
+https://your-live-accessai-url.com
+
+**GitHub Repository**
+
+https://github.com/yourusername/AccessAI
+
+---
+
+## ⭐ Acknowledgements
+
+This project was developed using **Lovable**, **React**, **TypeScript**, and **GitHub** as part of an AI application development portfolio.
+
+Special focus was placed on accessibility, inclusive design, and creating workplace AI tools that are practical, intuitive, and available to everyone.
+
+---
+
+> **"Technology should adapt to people—not the other way around."**
+>
+> — AccessAI
