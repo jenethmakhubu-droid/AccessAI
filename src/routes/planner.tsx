@@ -14,8 +14,8 @@ export const Route = createFileRoute("/planner")({
       placeholder={"One task per line, e.g.\n- Prepare Q3 forecast\n- Reply to client emails\n- Team stand-up at 10am"}
       cta="Plan my day"
       rows={10}
-      allowUploads={false}
       activityLabel="Day planned"
+      suggestions={["Group by priority","Create time blocks","Add breaks"]}
     />
   ),
 });
