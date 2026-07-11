@@ -204,7 +204,8 @@ http://localhost:8080
 
 ## Email Assistant
 
-<img width="1917" height="910" alt="image" src="https://github.com/user-attachments/assets/abe55569-87c6-4e6e-aa45-682cb977e0e2" />
+<img width="1918" height="932" alt="Screenshot 2026-07-11 055202" src="https://github.com/user-attachments/assets/c6c16cea-941c-40a5-a38d-e7ca8dfd5e63" />
+
 
 
 ---
@@ -218,7 +219,7 @@ http://localhost:8080
 
 ## Chat with Ava
 
-<img width="1918" height="896" alt="image" src="https://github.com/user-attachments/assets/9c450001-bc66-4df4-8a0c-02a380bcdb08" />
+<img width="1918" height="912" alt="Screenshot 2026-07-11 055614" src="https://github.com/user-attachments/assets/0803a092-0731-4452-8108-dac9c0737c41" />
 
 
 ---
