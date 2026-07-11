@@ -158,7 +158,7 @@ AccessAI/
 Clone the repository
 
 ```bash
-git clone https://github.com/YourUsername/AccessAI.git
+git clone https://github.com/jenethmakhubu-droid/AccessAI.git
 ```
 
 Navigate into the project
